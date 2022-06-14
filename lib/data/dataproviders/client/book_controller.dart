@@ -7,8 +7,6 @@ import 'package:klutter/data/models/readlistdto.dart';
 import 'package:klutter/data/models/readprogressupdatedto.dart';
 import 'package:retrofit/retrofit.dart';
 
-
-//需要生成.g    flutter packages pub run build_runner build
 part 'book_controller.g.dart';
 
 @RestApi()

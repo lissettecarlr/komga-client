@@ -23,7 +23,7 @@ class _ServerDrawerState extends State<ServerDrawer> {
   Widget build(BuildContext context) {
     LibraryDto? currentLibrary =
         ModalRoute.of(context)?.settings.arguments as LibraryDto?;
-    return Drawer( //左侧菜单按钮
+    return Drawer(
       child: Container(
         width: 50,
         child: ListView(
@@ -35,7 +35,7 @@ class _ServerDrawerState extends State<ServerDrawer> {
               selected:
                   ModalRoute.of(context)?.settings.name == ServerHome.routeName,
               leading: Icon(Icons.home),
-              title: Text("主页"),
+              title: Text("Home"),
               onTap: () =>
                   Navigator.pushReplacementNamed(context, ServerHome.routeName),
             ),
@@ -44,7 +44,7 @@ class _ServerDrawerState extends State<ServerDrawer> {
                   ModalRoute.of(context)?.settings.name ==
                       LibraryScreen.routeName,
               leading: Icon(Icons.library_books),
-              title: Text("书库"),
+              title: Text("Libraries"),
               onTap: () => Navigator.pushReplacementNamed(
                   context, LibraryScreen.routeName,
                   arguments: null),
@@ -74,12 +74,12 @@ class _ServerDrawerState extends State<ServerDrawer> {
             Divider(),
             ListTile(
               leading: Icon(Icons.logout),
-              title: Text("切换服务器"),
+              title: Text("Change server"),
               onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
                   ServerPicker.routeName, (Route<dynamic> route) => false),
             ),
             Divider(),
-            //KlutterAboutListTile(),
+            KlutterAboutListTile(),
             SelectThemeTile(),
           ],
         ),

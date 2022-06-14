@@ -13,7 +13,7 @@ class KlutterDrawerHeader extends StatelessWidget {
           Align(
               alignment: Alignment.bottomLeft,
               child: Text(
-                "Klutter瞎改版",
+                "Klutter",
                 style: Theme.of(context)
                     .textTheme
                     .headline6!

@@ -45,15 +45,15 @@ class _LibraryScreenState extends State<LibraryScreen> {
           child: Scaffold(
             drawer: ServerDrawer(),
             appBar: AppBar(
-              title: Text(library?.name ?? "所有书籍"),
+              title: Text(library?.name ?? "All Libraries"),
               actions: [KlutterSearchButton()],
               bottom: TabBar(
                 tabs: [
                   Tab(
-                    text: "阅读",
+                    text: "Browse",
                   ),
                   Tab(
-                    text: "收藏",
+                    text: "Collections",
                   )
                 ],
               ),
@@ -112,7 +112,7 @@ class CollectionGrid extends StatelessWidget {
       builder: (context, state) {
         if (state is CollectionsListEmpty) {
           return Center(
-            child: Text("没有进行过收藏"),
+            child: Text("No collections found"),
           );
         } else if (state is CollectionsListReady) {
           return Column(

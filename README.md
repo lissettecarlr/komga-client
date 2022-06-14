@@ -1,7 +1,23 @@
 # Komga客户端
 
-原本工程为[Klutter](https://github.com/frameset/klutter),本工程是对其自用改造。
+原仓库为[Klutter](https://github.com/frameset/klutter),此库是自用的改造。
 
+## 更新日志
+#### 2022/6/14本地编译通过
+
+* 移除 AndroidManifest.xml中13行的android:name字段
+  
+* 终端输入 flutter packages pub run build_runner build
+  
+* 修改android/build.gradle中第2行
+```
+ext.kotlin_version = '1.4.32'
+```
+
+* 修改app/build.gradle第47行
+```
+minSdkVersion 23
+```
 
 ## 关于搭建komga服务
 
@@ -31,11 +47,3 @@ docker run \
   gotson/komga:latest
 ```
 
-## 环境
-安装flutter sdk，android studio，然后安装studio中flutter的插件。其他方式不知道，我是这么编译运行完成的
-
-## 修改
-
-* 编译android报版本的错（我这儿环境如此，于是改到能编译运行）
-* 汉化
-* 

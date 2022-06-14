@@ -13,9 +13,6 @@ import 'package:intl/intl.dart' hide TextDirection;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
-
-//书本页面
-
 class BookScreen extends StatefulWidget {
   static const routeName = '/bookScreen';
 
@@ -51,10 +48,10 @@ class _BookScreenState extends State<BookScreen> {
               listener: (context, state) {
                 if (state is BookscreenNoNextBook) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("当前书籍已经是最后一本")));
+                      SnackBar(content: Text("You are at the last book")));
                 } else if (state is BookscreenNoPrevBook) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text("当前书籍已经是第一本"),
+                    content: Text("You are at the first book"),
                   ));
                 } else if (state is BookscreenGoNextBook) {
                   Navigator.popAndPushNamed(context, BookScreen.routeName,
@@ -183,7 +180,7 @@ class _BookScreenState extends State<BookScreen> {
                                         //   height: 9,
                                         // ),
                                         Text(
-                                          '# ' + currentbook.metadata.number,
+                                          '#' + currentbook.metadata.number,
                                           style: TextStyle(fontSize: 9.sp),
                                         ),
                                         currentbook.metadata.releaseDate == null
@@ -317,7 +314,7 @@ class MoreMenu extends StatelessWidget {
                 Icons.error_rounded,
                 color: Colors.red,
               ),
-              Text("标记已读失败"),
+              Text("Failed to mark as read"),
             ],
           )));
         } else if (state is BookScreenMoreMenuMarkReadSuccess) {
@@ -328,7 +325,7 @@ class MoreMenu extends StatelessWidget {
                 Icons.check_circle,
                 color: Colors.green,
               ),
-              Text("标记已读成功"),
+              Text("Successfully marked as read"),
             ],
           )));
           context.read<BookscreenInfoCubit>().getInfo();
@@ -340,7 +337,7 @@ class MoreMenu extends StatelessWidget {
                 Icons.error_rounded,
                 color: Colors.red,
               ),
-              Text("标记未读失败"),
+              Text("Failed to mark as unread"),
             ],
           )));
         } else if (state is BookScreenMoreMenuMarkUnreadSuccess) {
@@ -351,7 +348,7 @@ class MoreMenu extends StatelessWidget {
                 Icons.check_circle,
                 color: Colors.green,
               ),
-              Text("成功标记为未读"),
+              Text("Successfully marked as unread"),
             ],
           )));
           context.read<BookscreenInfoCubit>().getInfo();
@@ -374,19 +371,19 @@ class MoreMenu extends StatelessWidget {
               <PopupMenuEntry<MoreMenuChoice>>[
                 const PopupMenuItem<MoreMenuChoice>(
                   value: MoreMenuChoice.analyse,
-                  child: Text("分析"),
+                  child: Text("Analyse"),
                 ),
                 const PopupMenuItem<MoreMenuChoice>(
                   value: MoreMenuChoice.refresh,
-                  child: Text("刷新原数据"),
+                  child: Text("Refresh metadata"),
                 ),
                 const PopupMenuItem<MoreMenuChoice>(
                   value: MoreMenuChoice.markRead,
-                  child: Text("标记为已读"),
+                  child: Text("Mark as read"),
                 ),
                 const PopupMenuItem<MoreMenuChoice>(
                   value: MoreMenuChoice.markUnread,
-                  child: Text("标记为未读"),
+                  child: Text("Mark as unread"),
                 )
               ]),
     );

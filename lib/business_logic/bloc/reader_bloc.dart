@@ -19,7 +19,6 @@ class ReaderBloc extends Bloc<ReaderEvent, ReaderState> {
   Stream<ReaderState> mapEventToState(ReaderEvent event) async* {
     if (event is ReaderInitialLoad) {
       //get initial page and pass it back to the UI so user gets immediate feedback
-
       book.readProgress == null
           ? currentPage = 1
           : currentPage = book.readProgress!.page;
@@ -40,7 +39,6 @@ class ReaderBloc extends Bloc<ReaderEvent, ReaderState> {
 
         currentPage++;
         List<int> image = await _readerRepository.getPageImage(currentPage);
-
         yield ReaderPageReady(currentPage, image);
         await _readerRepository.updateReadPage(currentPage);
         _readerRepository.cacheAround(currentPage);

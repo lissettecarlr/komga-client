@@ -46,7 +46,6 @@ class MyApp extends StatelessWidget {
             }
             return MaterialApp(
               title: 'Klutter',
-              debugShowCheckedModeBanner: false,
               theme: ThemeData.light(),
               themeMode: themeMode,
               darkTheme: ThemeData.dark(),
@@ -60,7 +59,6 @@ class MyApp extends StatelessWidget {
                 LibraryScreen.routeName: (context) => LibraryScreen(),
                 CollectionScreen.routeName: (context) => CollectionScreen(),
               },
-
             );
           },
         );

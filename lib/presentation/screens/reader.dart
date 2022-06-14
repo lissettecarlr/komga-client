@@ -29,7 +29,7 @@ class _ReaderState extends State<Reader> {
   @override
   void initState() {
     super.initState();
-    _enterFullscreen(); //进入全屏
+    _enterFullscreen();
     scaleController = PhotoViewScaleStateController();
   }
 
@@ -38,7 +38,6 @@ class _ReaderState extends State<Reader> {
     final BookDto currentbook =
         ModalRoute.of(context)?.settings.arguments as BookDto;
     pageThumbnailCubit ??= PageThumbnailCubit(currentbook);
-    //菜单
     return Scaffold(
       body: MultiBlocProvider(
         providers: [
@@ -57,24 +56,23 @@ class _ReaderState extends State<Reader> {
                     color: Colors.black,
                     child: BlocConsumer<ReaderBloc, ReaderState>(
                       listener: (context, state) {
-                        if (state is ReaderReachedEnd) { //检测是否到达最后一页
-                          Navigator.of(context).popAndPushNamed( //切换下一本书
+                        if (state is ReaderReachedEnd) {
+                          Navigator.of(context).popAndPushNamed(
                               BookScreen.routeName,
                               arguments: state.nextBook);
-                        } else if (state is ReaderReachedStart) { //检测是否到达第一页
-                          Navigator.of(context).popAndPushNamed( //切换上一本书
+                        } else if (state is ReaderReachedStart) {
+                          Navigator.of(context).popAndPushNamed(
                               BookScreen.routeName,
                               arguments: state.prevBook);
-                        } else if (state is ReaderPageReady) { //如果状态正常则显示对应页码
-                           currentSliderValue = state.pageNumber;
+                        } else if (state is ReaderPageReady) {
+                          currentSliderValue = state.pageNumber;
                         }
-                      //Troubleshooting print statement
-                        else if (state is ReaderLoading) {
-                          print(
-                            "listener heard loading page ${state.pageNumber}");
-                          }
-                        },
-
+                        // //Troubleshooting print statement
+                        // else if (state is ReaderLoading) {
+                        //   print(
+                        //       "listener heard loading page ${state.pageNumber}");
+                        // }
+                      },
                       builder: (context, state) {
                         if (state is ReaderInitial) {
                           return Center(child: CircularProgressIndicator());
@@ -82,7 +80,6 @@ class _ReaderState extends State<Reader> {
                           print("loading page ${state.pageNumber}");
                           return Center(child: CircularProgressIndicator());
                         } else if (state is ReaderFailed) {
-                          print("ReaderFailed");
                           return Center(
                               child: Icon(
                             Icons.error,
@@ -111,8 +108,7 @@ class _ReaderState extends State<Reader> {
                               resizeDuration: null,
                               child: PhotoView(
                                 scaleStateChangedCallback: (scaleState) {
-                                  print("scaleStateChangedCallback");
-                                  print( scaleState);
+                                  print(scaleState);
                                   setState(() {
                                     if (scaleState !=
                                         PhotoViewScaleState.initial) {
@@ -128,7 +124,7 @@ class _ReaderState extends State<Reader> {
                                 initialScale: PhotoViewComputedScale.contained,
                                 minScale: PhotoViewComputedScale.contained,
                                 gaplessPlayback: true,
-                                enableRotation: false, //旋转
+                                enableRotation: false,
                                 imageProvider: MemoryImage(
                                   Uint8List.fromList(state.pageImage),
                                 ),

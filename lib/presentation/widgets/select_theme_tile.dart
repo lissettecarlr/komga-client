@@ -22,7 +22,7 @@ class SelectThemeTile extends StatelessWidget {
 
         return ListTile(
           leading: leadingIcon,
-          title: Text("主题"),
+          title: Text("Theme"),
           subtitle: DropdownButton(
             isExpanded: true,
             value: state,
@@ -30,15 +30,15 @@ class SelectThemeTile extends StatelessWidget {
                 context.read<ThemeCubit>().setTheme(value as ThemeState),
             items: [
               DropdownMenuItem(
-                child: Text("白日"),
+                child: Text("Light"),
                 value: ThemeState.light,
               ),
               DropdownMenuItem(
-                child: Text("黑夜"),
+                child: Text("Dark"),
                 value: ThemeState.dark,
               ),
               DropdownMenuItem(
-                child: Text("跟随系统"),
+                child: Text("System"),
                 value: ThemeState.system,
               ),
             ],

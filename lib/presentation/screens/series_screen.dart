@@ -46,9 +46,9 @@ class _SeriesScreenState extends State<SeriesScreen> {
             bottom: TabBar(
               tabs: [
                 Tab(
-                  text: "信息",
+                  text: "Info",
                 ),
-                Tab(text: "书籍"),
+                Tab(text: "Books"),
               ],
               automaticIndicatorColorAdjustment: true,
             ),
@@ -129,8 +129,8 @@ class InfoTab extends StatelessWidget {
                           ),
                           Text(
                             series.booksCount == 1
-                                ? "共 1 本书"
-                                : "共" + series.booksCount.toString() + " 本书",
+                                ? "1 book"
+                                : series.booksCount.toString() + " books",
                             style: TextStyle(fontSize: 8.sp),
                           ),
                         ],

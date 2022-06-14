@@ -20,7 +20,6 @@ class ReaderRepository {
     }
   }
 
-  //获取下一页图
   Future<List<int>> getPageImage(int pageNumber) async {
     if (pageMap.containsKey(pageNumber)) {
       return pageMap[pageNumber]!;

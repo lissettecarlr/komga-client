@@ -24,7 +24,7 @@ class _ServerPickerState extends State<ServerPicker> {
       child: Builder(
         builder: (context) {
           return Scaffold(
-            appBar: AppBar(title: Text("选择 Komga 服务器")),
+            appBar: AppBar(title: Text("Select a Komga server")),
             drawer: ServerPickerDrawer(),
             body: BlocConsumer<ServerCubit, ServerState>(
               listener: (context, state) {
@@ -33,7 +33,7 @@ class _ServerPickerState extends State<ServerPicker> {
                 }
                 if (state is ServerAddNewFailed) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("服务器添加失败")));
+                      SnackBar(content: Text("Adding new server failed")));
                 }
               },
               builder: (context, state) {
@@ -98,11 +98,11 @@ class _AddServerDialogState extends State<AddServerDialog> {
   late String url;
   late String username;
   late String password;
-  //增加服务器按钮弹出窗体
+
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: Text("新增服务器"),
+      title: Text("Add new server"),
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -111,16 +111,15 @@ class _AddServerDialogState extends State<AddServerDialog> {
             child: Column(
               children: [
                 TextFormField(
-                  // initialValue: "NAS",
                   onChanged: (value) => serverName = value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                       icon: Icon(Icons.star),
-                      labelText: '服务器名称',
-                      hintText: '输入服务器名称'),
+                      labelText: 'Server Nickname',
+                      hintText: 'Enter a server nickname'),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return '服务器名称为空';
+                      return 'Server Name';
                     } else {
                       return null;
                     }
@@ -131,8 +130,8 @@ class _AddServerDialogState extends State<AddServerDialog> {
                     onChanged: (value) => url = value,
                     decoration: InputDecoration(
                         icon: Icon(Icons.cloud),
-                        labelText: '服务器地址',
-                        hintText: '输入http://或者https://开头的服务器地址'),
+                        labelText: 'Server address',
+                        hintText: 'Enter the server\'s address'),
                     validator: (value) {
                       if (isURL(
                         value!,
@@ -141,40 +140,38 @@ class _AddServerDialogState extends State<AddServerDialog> {
                       )) {
                         return null;
                       } else {
-                        return "服务器地址无效,示例: https://komga.example.com";
+                        return "URL not valid. Please include the protocol, e.g. https://komga.example.com";
                       }
                     }),
                 AutofillGroup(
                     child: Column(children: [
                   TextFormField(
-                    // initialValue: "test@test.com",
                     keyboardType: TextInputType.emailAddress,
                     autofillHints: [AutofillHints.username],
                     onChanged: (value) => username = value,
                     decoration: InputDecoration(
                         icon: Icon(Icons.person),
-                        labelText: '账号',
-                        hintText: '输入登录账号'),
+                        labelText: 'Username',
+                        hintText: 'Enter your username'),
                     validator: (value) {
                       if (isEmail(value!)) {
                         return null;
                       } else {
-                        return '输入的账号应该是一个有效的邮箱地址';
+                        return 'Enter your username, it should be a valid email address';
                       }
                     },
                   ),
                   TextFormField(
-                    // initialValue: "123456",
                     onChanged: (value) => password = value,
                     autofillHints: [AutofillHints.password],
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                         icon: Icon(Icons.password),
-                        labelText: '密码',
-                        hintText: '输入登录密码'),
+                        labelText: 'Password',
+                        hintText: 'Enter your password'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return '请输入密码';
+                        return 'Enter your password';
                       }
                       return null;
                     },
@@ -195,7 +192,7 @@ class _AddServerDialogState extends State<AddServerDialog> {
                         Navigator.pop(context);
                       }
                     },
-                    child: Text("提交"))
+                    child: Text("Submit"))
               ],
             ),
             // autovalidateMode: AutovalidateMode.onUserInteraction,
