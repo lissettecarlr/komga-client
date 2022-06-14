@@ -4,6 +4,7 @@ import 'package:klutter/presentation/widgets/select_theme_tile.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'klutter_about_list_tile.dart';
 
+//服务器选择页面的侧边栏点开才显示下来内容
 class ServerPickerDrawer extends StatelessWidget {
   const ServerPickerDrawer({
     Key? key,
@@ -16,13 +17,13 @@ class ServerPickerDrawer extends StatelessWidget {
         KlutterDrawerHeader(),
         ListTile(
           leading: Icon(Icons.web),
-          title: Text("Komga Website"),
+          title: Text("Komga官网"),
           onTap: () => _launchBrowser("http://komga.org"),
         ),
         ListTile(
           leading: Icon(Icons.web),
-          title: Text("Klutter GitHub"),
-          onTap: () => _launchBrowser("http://github.com/frameset/klutter"),
+          title: Text("此软件仓库"),
+          onTap: () => _launchBrowser("https://github.com/lissettecarlr/komga-client"),
         ),
         Divider(),
         KlutterAboutListTile(),

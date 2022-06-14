@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
               home: ServerPicker(),
               routes: {
                 ServerHome.routeName: (context) => ServerHome(),
-                ServerPicker.routeName: (context) => ServerPicker(),
+                ServerPicker.routeName: (context) => ServerPicker(), //服务器选择页面
                 BookScreen.routeName: (context) => BookScreen(),
                 SeriesScreen.routeName: (context) => SeriesScreen(),
                 Reader.routeName: (context) => Reader(),

@@ -8,10 +8,10 @@ class KlutterAboutListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AboutListTile(
-      applicationLegalese: "Many thanks to gotson for creating Komga",
-      applicationName: "Klutter",
+      applicationLegalese: "基于Klutter的改版，用于连接komga",
+      applicationName: "Klutter-卡拉版",
       icon: Icon(Icons.help),
-      applicationVersion: "0.7.0",
+      applicationVersion: "0.0.1",
     );
   }
 }

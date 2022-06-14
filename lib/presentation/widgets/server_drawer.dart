@@ -35,7 +35,7 @@ class _ServerDrawerState extends State<ServerDrawer> {
               selected:
                   ModalRoute.of(context)?.settings.name == ServerHome.routeName,
               leading: Icon(Icons.home),
-              title: Text("Home"),
+              title: Text("主页"),
               onTap: () =>
                   Navigator.pushReplacementNamed(context, ServerHome.routeName),
             ),
@@ -44,7 +44,7 @@ class _ServerDrawerState extends State<ServerDrawer> {
                   ModalRoute.of(context)?.settings.name ==
                       LibraryScreen.routeName,
               leading: Icon(Icons.library_books),
-              title: Text("Libraries"),
+              title: Text("书架"),
               onTap: () => Navigator.pushReplacementNamed(
                   context, LibraryScreen.routeName,
                   arguments: null),
@@ -74,7 +74,7 @@ class _ServerDrawerState extends State<ServerDrawer> {
             Divider(),
             ListTile(
               leading: Icon(Icons.logout),
-              title: Text("Change server"),
+              title: Text("服务器切换"),
               onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
                   ServerPicker.routeName, (Route<dynamic> route) => false),
             ),

@@ -24,7 +24,7 @@ class _ServerPickerState extends State<ServerPicker> {
       child: Builder(
         builder: (context) {
           return Scaffold(
-            appBar: AppBar(title: Text("Select a Komga server")),
+            appBar: AppBar(title: Text("选择Komga服务器")),
             drawer: ServerPickerDrawer(),
             body: BlocConsumer<ServerCubit, ServerState>(
               listener: (context, state) {
@@ -33,17 +33,19 @@ class _ServerPickerState extends State<ServerPicker> {
                 }
                 if (state is ServerAddNewFailed) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Adding new server failed")));
+                      SnackBar(content: Text("服务器添加错误")));
                 }
               },
               builder: (context, state) {
+                //如果在初始化就弄个图标转圈
                 if (state is ServerInitial) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
+                //如果没用找到服务器则显示提升语句，添加服务器
                 } else if (state is ServersEmpty) {
                   return Center(
-                    child: Text("Add a server using the floating button"),
+                    child: Text("通过右下角按钮添加服务器吧！"),
                   );
                 } else if (state is ServersFetched) {
                   return ListView.builder(
@@ -63,7 +65,7 @@ class _ServerPickerState extends State<ServerPicker> {
                 }
               },
             ),
-            floatingActionButton: FloatingActionButton(
+            floatingActionButton: FloatingActionButton(      //浮动按键
               onPressed: () {
                 ServerCubit serverCubit = context.read<ServerCubit>();
                 AddServerDialog addServerDialog = AddServerDialog();
@@ -102,7 +104,7 @@ class _AddServerDialogState extends State<AddServerDialog> {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: Text("Add new server"),
+      title: Text("添加服务器"),
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -115,8 +117,8 @@ class _AddServerDialogState extends State<AddServerDialog> {
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                       icon: Icon(Icons.star),
-                      labelText: 'Server Nickname',
-                      hintText: 'Enter a server nickname'),
+                      labelText: '服务器名称',
+                      hintText: '自定义命名，顺便写'),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Server Name';
@@ -130,8 +132,8 @@ class _AddServerDialogState extends State<AddServerDialog> {
                     onChanged: (value) => url = value,
                     decoration: InputDecoration(
                         icon: Icon(Icons.cloud),
-                        labelText: 'Server address',
-                        hintText: 'Enter the server\'s address'),
+                        labelText: '地址',
+                        hintText: '域名或者IP地址'),
                     validator: (value) {
                       if (isURL(
                         value!,
@@ -140,7 +142,7 @@ class _AddServerDialogState extends State<AddServerDialog> {
                       )) {
                         return null;
                       } else {
-                        return "URL not valid. Please include the protocol, e.g. https://komga.example.com";
+                        return "地址错误！. 请添加协议, 例如 https://komga.example.com";
                       }
                     }),
                 AutofillGroup(
@@ -151,13 +153,13 @@ class _AddServerDialogState extends State<AddServerDialog> {
                     onChanged: (value) => username = value,
                     decoration: InputDecoration(
                         icon: Icon(Icons.person),
-                        labelText: 'Username',
-                        hintText: 'Enter your username'),
+                        labelText: '用户名',
+                        hintText: 'web上注册，邮箱'),
                     validator: (value) {
                       if (isEmail(value!)) {
                         return null;
                       } else {
-                        return 'Enter your username, it should be a valid email address';
+                        return '用户名应该是一个邮箱地址';
                       }
                     },
                   ),
@@ -167,8 +169,8 @@ class _AddServerDialogState extends State<AddServerDialog> {
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                         icon: Icon(Icons.password),
-                        labelText: 'Password',
-                        hintText: 'Enter your password'),
+                        labelText: '密码',
+                        hintText: 'web上注册的'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Enter your password';
@@ -192,7 +194,7 @@ class _AddServerDialogState extends State<AddServerDialog> {
                         Navigator.pop(context);
                       }
                     },
-                    child: Text("Submit"))
+                    child: Text("提交"))
               ],
             ),
             // autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -203,6 +205,7 @@ class _AddServerDialogState extends State<AddServerDialog> {
   }
 }
 
+//服务器列表的展示
 class ServerCard extends StatelessWidget {
   final Server server;
   const ServerCard(this.server);
@@ -224,7 +227,7 @@ class ServerCard extends StatelessWidget {
               }
             }),
         title: Text(server.name),
-        subtitle: Text(server.username),
+        subtitle: Text("用户名："+server.username+"  地址: "+server.url),
         trailing: IconButton(
           icon: Icon(Icons.delete),
           color: Colors.red,

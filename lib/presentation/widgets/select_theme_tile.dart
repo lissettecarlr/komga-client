@@ -22,7 +22,7 @@ class SelectThemeTile extends StatelessWidget {
 
         return ListTile(
           leading: leadingIcon,
-          title: Text("Theme"),
+          title: Text("主题"),
           subtitle: DropdownButton(
             isExpanded: true,
             value: state,
