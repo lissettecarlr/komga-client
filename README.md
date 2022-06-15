@@ -3,6 +3,12 @@
 原仓库为[Klutter](https://github.com/frameset/klutter),此库是自用的改造。
 
 ## 更新日志
+
+#### 2022/6/15汉化
+* 汉化
+* 去除debug标签
+* 隐藏可能导致BUG的2个按钮
+
 #### 2022/6/14本地编译通过
 
 * 移除 AndroidManifest.xml中13行的android:name字段

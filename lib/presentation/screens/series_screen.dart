@@ -44,7 +44,7 @@ class _SeriesScreenState extends State<SeriesScreen> {
         child: Scaffold(
           appBar: AppBar(
             actions: [KlutterSearchButton()],
-            title: Text("Series: " + series.metadata.title),
+            title: Text("系列: " + series.metadata.title),
             bottom: TabBar(
               tabs: [
                 Tab(
