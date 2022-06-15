@@ -65,24 +65,25 @@ class _BookScreenState extends State<BookScreen> {
                 appBar: AppBar(
                   title: Text(currentbook.metadata.title),
                   actions: [
-                    Builder(
-                      builder: (context) {
-                        return IconButton(
-                          icon: Icon(Icons.chevron_left),
-                          onPressed: () {
-                            context.read<BookscreenNavbarCubit>().tryGoPrev();
-                          },
-                        );
-                      },
-                    ),
-                    Builder(builder: (context) {
-                      return IconButton(
-                        icon: Icon(Icons.chevron_right),
-                        onPressed: () {
-                          context.read<BookscreenNavbarCubit>().tryGoNext();
-                        },
-                      );
-                    }),
+                    //暂时屏蔽，有BUG
+                    // Builder(
+                    //   builder: (context) {
+                    //     return IconButton(
+                    //       icon: Icon(Icons.chevron_left),
+                    //       onPressed: () {
+                    //         context.read<BookscreenNavbarCubit>().tryGoPrev();
+                    //       },
+                    //     );
+                    //   },
+                    // ),
+                    // Builder(builder: (context) {
+                    //   return IconButton(
+                    //     icon: Icon(Icons.chevron_right),
+                    //     onPressed: () {
+                    //       context.read<BookscreenNavbarCubit>().tryGoNext();
+                    //     },
+                    //   );
+                    // }),
                     MoreMenu()
                   ],
                 ),
@@ -314,7 +315,7 @@ class MoreMenu extends StatelessWidget {
                 Icons.error_rounded,
                 color: Colors.red,
               ),
-              Text("Failed to mark as read"),
+              Text("标记已读失败"),
             ],
           )));
         } else if (state is BookScreenMoreMenuMarkReadSuccess) {
@@ -325,7 +326,7 @@ class MoreMenu extends StatelessWidget {
                 Icons.check_circle,
                 color: Colors.green,
               ),
-              Text("Successfully marked as read"),
+              Text("标记已读成功"),
             ],
           )));
           context.read<BookscreenInfoCubit>().getInfo();
@@ -337,7 +338,7 @@ class MoreMenu extends StatelessWidget {
                 Icons.error_rounded,
                 color: Colors.red,
               ),
-              Text("Failed to mark as unread"),
+              Text("标记未读失败"),
             ],
           )));
         } else if (state is BookScreenMoreMenuMarkUnreadSuccess) {
@@ -348,7 +349,7 @@ class MoreMenu extends StatelessWidget {
                 Icons.check_circle,
                 color: Colors.green,
               ),
-              Text("Successfully marked as unread"),
+              Text("成功标记为未读"),
             ],
           )));
           context.read<BookscreenInfoCubit>().getInfo();
@@ -371,19 +372,19 @@ class MoreMenu extends StatelessWidget {
               <PopupMenuEntry<MoreMenuChoice>>[
                 const PopupMenuItem<MoreMenuChoice>(
                   value: MoreMenuChoice.analyse,
-                  child: Text("Analyse"),
+                  child: Text("分析"),
                 ),
                 const PopupMenuItem<MoreMenuChoice>(
                   value: MoreMenuChoice.refresh,
-                  child: Text("Refresh metadata"),
+                  child: Text("刷新元数据"),
                 ),
                 const PopupMenuItem<MoreMenuChoice>(
                   value: MoreMenuChoice.markRead,
-                  child: Text("Mark as read"),
+                  child: Text("标记为已读"),
                 ),
                 const PopupMenuItem<MoreMenuChoice>(
                   value: MoreMenuChoice.markUnread,
-                  child: Text("Mark as unread"),
+                  child: Text("标记为未读"),
                 )
               ]),
     );

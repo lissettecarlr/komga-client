@@ -21,7 +21,7 @@ class ServerHome extends StatelessWidget {
         create: (context) => ServerHomeRepository(),
         child: Scaffold(
             appBar: AppBar(
-              title: Text("Server Home"),
+              title: Text("服务器主页"),
               actions: [KlutterSearchButton()],
             ),
             drawer: ServerDrawer(),
@@ -64,7 +64,7 @@ class RecentlyupdatedSeries extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Recently Updated Series",
+                  "最近更新系列",
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ),
@@ -107,7 +107,7 @@ class KeepReading extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Keep Reading",
+                  "正在阅读",
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ),
@@ -153,7 +153,7 @@ class RecentlyaddedSeries extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Recently Added Series",
+                  "最近添加的系列",
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ),
@@ -197,7 +197,7 @@ class RecentlyaddedBooks extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Recently Added Books",
+                  "最近添加的书",
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ),

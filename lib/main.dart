@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
               themeMode: themeMode,
               darkTheme: ThemeData.dark(),
               home: ServerPicker(),
+              debugShowCheckedModeBanner: false,
               routes: {
                 ServerHome.routeName: (context) => ServerHome(),
                 ServerPicker.routeName: (context) => ServerPicker(), //服务器选择页面

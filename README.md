@@ -14,8 +14,9 @@
 ext.kotlin_version = '1.4.32'
 ```
 
-* 修改app/build.gradle第47行
+* 修改app/build.gradle ，25行、47行
 ```
+compileSdkVersion 31
 minSdkVersion 23
 ```
 

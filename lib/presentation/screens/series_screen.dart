@@ -11,6 +11,8 @@ import 'package:klutter/business_logic/cubit/series_thumbnail_cubit.dart';
 import 'package:klutter/presentation/widgets/search.dart';
 import 'package:sizer/sizer.dart';
 
+//书籍显示页面，书籍包含多个书本
+
 class SeriesScreen extends StatefulWidget {
   static const routeName = '/seriesScreen';
   const SeriesScreen({Key? key}) : super(key: key);
@@ -46,9 +48,9 @@ class _SeriesScreenState extends State<SeriesScreen> {
             bottom: TabBar(
               tabs: [
                 Tab(
-                  text: "Info",
+                  text: "信息",
                 ),
-                Tab(text: "Books"),
+                Tab(text: "书籍"),
               ],
               automaticIndicatorColorAdjustment: true,
             ),
@@ -129,8 +131,8 @@ class InfoTab extends StatelessWidget {
                           ),
                           Text(
                             series.booksCount == 1
-                                ? "1 book"
-                                : series.booksCount.toString() + " books",
+                                ? "仅有1本"
+                                : series.booksCount.toString() + " 本",
                             style: TextStyle(fontSize: 8.sp),
                           ),
                         ],

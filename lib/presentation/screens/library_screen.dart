@@ -13,6 +13,8 @@ import 'package:klutter/presentation/widgets/series_card.dart';
 import 'package:klutter/presentation/widgets/series_grid_view.dart';
 import 'package:klutter/presentation/widgets/server_drawer.dart';
 
+//书库的页面，里面显示的是书籍
+
 class LibraryScreen extends StatefulWidget {
   static const String routeName = '/libraryScreen';
   const LibraryScreen({Key? key}) : super(key: key);
@@ -50,10 +52,10 @@ class _LibraryScreenState extends State<LibraryScreen> {
               bottom: TabBar(
                 tabs: [
                   Tab(
-                    text: "Browse",
+                    text: "浏览",
                   ),
                   Tab(
-                    text: "Collections",
+                    text: "收藏",
                   )
                 ],
               ),
